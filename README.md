@@ -1,13 +1,16 @@
-# electron-boilerplate
+# electron-template
 
-Minimalistic, very easy to understand boilerplate for [Electron runtime](https://www.electronjs.org/). Tested on Windows, macOS and Linux.  
+Very easy to understand and use template for [Electron runtime](https://www.electronjs.org/). Tested on Windows, macOS and Linux.  
 
-This project contains only bare minimum of tooling and dependencies to provide you with simple to understand and extensible base (but still, this is fully functional Electron environment). The boilerplate doesn't impose on you any frontend technologies, so feel free to pick your favourite.
+This Project also includes workin github actions disable/enable if you need them;
 
 # Quick start
 
 Make sure you have [Node.js](https://nodejs.org) installed, then type...
-```
+
+You can also use yarn instead of npm. (pnpm should be fine too)
+
+```bash
 git clone https://github.com/szwacz/electron-boilerplate.git
 cd electron-boilerplate
 npm install
@@ -19,13 +22,13 @@ npm start
 
 The application consists of two main folders...
 
-`src` - files within this folder get transpiled or compiled (because Electron can't use them directly).
+`src/main` - files within this folder get transpiled or compiled (because Electron can't use them directly).
 
-`app` - contains all static assets which don't need any pre-processing and can be used directly.
+`src/render` - contains all static assets which don't need any pre-processing and can be used directly.
 
-The build process compiles the content of the `src` folder and puts it into the `app` folder, so after the build has finished, your `app` folder contains the full, runnable application. Treat `src` and `app` folders like two halves of one bigger thing.
+The build process compiles the content of the `src/main` folder and puts it into the `src/render` folder, so after the build has finished, your `src/render` folder contains the full, runnable application. Treat `src/main` and `src/render` folders like two halves of one bigger thing.
 
-The drawback of this design is that `app` folder contains some files which should be git-ignored and some which shouldn't (see `.gitignore` file). But this two-folders split makes development builds much faster.
+The drawback of this design is that `src/render` folder contains some files which should be git-ignored and some which shouldn't (see `.gitignore` file). But this two-folders split makes development builds much faster.
 
 # Development
 
@@ -37,7 +40,7 @@ npm start
 
 ## The build pipeline
 
-Build process uses [Webpack](https://webpack.js.org/). The entry-points are `src/main.js` and `src/app.js`. Webpack will follow all `import` statements starting from those files and compile code of the whole dependency tree into one `.js` file for each entry point.
+Build process uses [Webpack](https://webpack.js.org/). The entry-points are `src/main/main.js` and `src/main/app.js`. Webpack will follow all `import` statements starting from those files and compile code of the whole dependency tree into one `.js` file for each entry point.
 
 [Babel](http://babeljs.io/) is also utilised, but mainly for its great error messages. Electron under the hood runs latest Chromium, hence most of the new JavaScript features are already natively supported.
 
@@ -67,7 +70,7 @@ npm test
 ```
 npm run unit
 ```
-Using [electron-mocha](https://github.com/jprichardson/electron-mocha) test runner with the [Chai](http://chaijs.com/api/assert/) assertion library. You can put your spec files wherever you want within the `src` directory, just name them with the `.spec.js` extension.
+Using [electron-mocha](https://github.com/jprichardson/electron-mocha) test runner with the [Chai](http://chaijs.com/api/assert/) assertion library. You can put your spec files wherever you want within the `src/main` directory, just name them with the `.spec.js` extension.
 
 ## End to end
 
@@ -88,3 +91,12 @@ Once the packaging process finished, the `dist` directory will contain your dist
 [Electron-builder](https://github.com/electron-userland/electron-builder) is handling the packaging process. Follow docs over there to customise your build.
 
 You can package your app cross-platform from a single operating system, [electron-builder kind of supports this](https://www.electron.build/multi-platform-build), but there are limitations and asterisks. That's why this boilerplate doesn't do that by default.
+
+# Credits
+Credits go to the following people:
+    
+| Orignal Creator | Project                                                                | 
+|-----------------|------------------------------------------------------------------------|
+| szwacz          | [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) | 
+
+If you think you are missing in the list, please open an issue or pull request and let me know.
