@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+/app
+/temp
+
 # Runtime data
 pids
 *.pid
