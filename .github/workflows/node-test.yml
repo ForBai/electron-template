@@ -40,7 +40,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    needs: test-ml
+    needs: test
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
