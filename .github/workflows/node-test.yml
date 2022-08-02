@@ -9,9 +9,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs:
-  build:
 
+jobs:
+  test:
+    name: Test Project with e2e
     strategy:
       matrix:
         node-version: [ 16.9 ]
@@ -29,3 +30,23 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn e2e
+  build:
+    name: Build project using electron-builder
+    strategy:
+      matrix:
+        node-version: [ 16.9 ]
+        os: [ ubuntu-latest, windows-latest,macos-latest ]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    runs-on: ${{ matrix.os }}
+
+    needs: test-ml
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - run: yarn
+    - run: yarn release
