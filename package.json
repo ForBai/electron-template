@@ -1,6 +1,6 @@
 {
-  "name": "my-temp-app",
-  "productName": "my-temp-app",
+  "name": "electron-template",
+  "productName": "electron-template",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -13,8 +13,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "ForBai",
-    "email": "thelars42@gmail.com"
+    "name": "Nane",
+    "email": "Name@email.com"
   },
   "license": "MIT",
   "config": {
@@ -24,13 +24,14 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "my_temp_app"
+            "name": "electron_template"
           }
         },
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+            "linux"
           ]
         },
         {
@@ -40,11 +41,19 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
+        },
+        {
+          "name": "electron-forge-maker-appimage",
+          "platforms": [
+            "linux"
+          ],
+          "config": {}
         }
       ]
     }
   },
   "dependencies": {
+    "electron-forge-maker-appimage": "https://github.com/Marcus10110/electron-forge-maker-appimage.git",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
