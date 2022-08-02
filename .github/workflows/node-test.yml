@@ -50,10 +50,10 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - name: build other-platforms
-      if: ${{ matrix.os }} ! 'ubuntu-latest'
+      if: ${{matrix.os ! 'ubuntu-latest'}}
       run: yarn release
     - name: build debian package
-      if: ${{ matrix.os }} == 'ubuntu-latest'
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: |
         sudo snap install snapcraft --classic
         yarn build-deb
